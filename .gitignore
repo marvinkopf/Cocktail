@@ -1,0 +1,4 @@
+/data/db/
+/.env.bat
+/.env
+/data/web/db.sqlite3
