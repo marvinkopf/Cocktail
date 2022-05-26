@@ -3,3 +3,6 @@
 /.env
 /data/web/db.sqlite3
 /.venv
+/data/web/react-app/build/
+/data/web/react-app/node_modules/
+/data/web/react-app/package-lock.json
