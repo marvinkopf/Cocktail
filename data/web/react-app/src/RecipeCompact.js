@@ -1,4 +1,3 @@
-import recipe from "./Recipe"
 import "./RecipeCompact.css";
 
 function RecipeCompactComponent(props) {
