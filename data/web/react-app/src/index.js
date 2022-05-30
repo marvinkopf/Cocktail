@@ -1,13 +1,11 @@
-function NamensKomponente() {
-                return (
-                    <i>Welt</i>
-                )
-            }
+import App from "./App"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import "./index.css";
 
-
-function AusgabenKomponente(props){
-    return (
-        <h1 id="erster">Hallo <NamensKomponente />, {props.name}</h1>
-    )
-}
-ReactDOM.render(<AusgabenKomponente name="Test" />,document.getElementById("root"))
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

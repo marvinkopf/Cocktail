@@ -1,0 +1,42 @@
+{
+  "rooms": [
+    { "id" : "DGHD", "name" :  "Awesome Party",
+      "ingredients" :  [ { "id" : 1, "name" : "Vodka"},
+    {"id" :  2, "name":  "Gin"},
+    { "id" : 3, "name" : "Lime"},
+    { "id" : 4, "name" : "Mint"},
+    { "id" : 5, "name" : "Dry Vermouth"}],
+      "recipes" :   [
+    {"id" :  1, "name" :  "Pina Colada", "ingredients" :  [ { "id" : 1, "name" : "Vodka"},
+    {"id" :  2, "name":  "Gin"},
+    { "id" : 3, "name" : "Lime"},
+    { "id" : 4, "name" : "Mint"},
+    { "id" : 5, "name" : "Dry Vermouth"}]},
+    {"id" :  2, "name" :  "P2", "ingredients" :  [ { "id" : 1, "name" : "Vodka"},
+    {"id" :  2, "name":  "Gin"},
+    { "id" : 3, "name" : "Lime"},
+    { "id" : 4, "name" : "Mint"},
+    { "id" : 5, "name" : "Dry Vermouth"}]},
+    {"id" :  3, "name" :  "P3", "ingredients" :  [ { "id" : 1, "name" : "Vodka"},
+    {"id" :  2, "name":  "Gin"},
+    { "id" : 3, "name" : "Lime"},
+    { "id" : 4, "name" : "Mint"},
+    { "id" : 5, "name" : "Dry Vermouth"}]},
+    {"id" :  4, "name" :  "P4", "ingredients" :  [ { "id" : 1, "name" : "Vodka"},
+    {"id" :  2, "name":  "Gin"},
+    { "id" : 3, "name" : "Lime"},
+    { "id" : 4, "name" : "Mint"},
+    { "id" : 5, "name" : "Dry Vermouth"}]}]}
+  ],
+  "ingredients": [ { "id" : 1, "name" : "Vodka"},
+    {"id" :  2, "name":  "Gin"},
+    { "id" : 3, "name" : "Lime"},
+    { "id" : 4, "name" : "Mint"},
+    { "id" : 5, "name" : "Dry Vermouth"}],
+  "recipes" : [
+    {"id" :  1, "name" :  "Pina Colada", "ingredients" :  [1,2,3]},
+    {"id" :  2, "name" :  "P2", "ingredients" :  [1,2,4]},
+    {"id" :  3, "name" :  "P3", "ingredients" :  [3,4,5]},
+    {"id" :  4, "name" :  "P4", "ingredients" :  [1,2,3, 5]}
+  ]
+}

@@ -1,0 +1,106 @@
+.room-body ul {
+    list-style-type: none;
+    margin: 0;
+    font-size: 30px;
+    width: 220px;
+}
+
+html {
+    background-color: #e9e0c8;
+}
+
+.room {
+    position: absolute;
+     top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+
+.room-body {
+    height: calc(100% - 100px);
+}
+
+ul {
+    height: 100%;
+}
+
+.room {
+    height: calc(100% - 20px);
+}
+
+div {
+   height: calc(100% - 100px);
+}
+
+.room-recipes {
+    width: calc(100% - 265px);
+}
+
+.room-recipes ul {
+    width: auto;
+}
+
+.room-recipes ul li:last-child {
+        width: 100%;
+}
+
+.room-zutaten, .room-recipes {
+    float: left;
+    height: 100%;
+}
+
+.room-body ul li:first-child {
+
+}
+
+.room-body ul li:last-child {
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+    background-color: #f8f4eb;
+    height: inherit;
+    border: 1px solid darkgray;
+    height: calc(100% - 55px);
+}
+
+
+.room-header ul {
+    list-style-type: none;
+    margin: 0;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.room-recipes ul ul li {
+    border: none !important;
+    margin: 10px 10px 10px 10px !important;
+    display: block;
+    height: 30px !important;
+    width: auto !important;
+}
+
+.room-recipes ul ul {
+    padding: 0;
+    display: block;
+    height: 30px;
+}
+
+.room-header {
+    height: 100px;
+}
+
+.room-header ul li:first-child {
+    color: #70a3eb;
+    border: 2px solid #70a3eb;
+}
+
+.room-header ul li {
+    display: block;
+    float: left;
+    padding: 14px 16px;
+}
+
+.room-header ul li:last-child {
+    float: right;
+}

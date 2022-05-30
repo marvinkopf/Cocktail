@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+.container {
+    position: absolute;
+    height: auto;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 10px;
+}
+
+@media screen and (max-width: 400px){
+.container {
+    display: grid;
+    gap: 10px 10px;
+    grid-template-rows: 50px 80px auto 80px auto;
+}
+
+.room-name {
+    grid-aera: 1 / 1 / span 1 / span 1;
+}
+
+.room-id {
+    grid-area: 1 / 2 / span 1 / span 1;
+    justify-self: end;
+}
+
+.ingredients-header {
+    grid-area: 2 / 1 / span 1 / span 2;
+    margin-top: 50px;
+}
+
+.ingredients {
+    grid-area: 3 / 1 / span 1 / span 2;
+}
+
+.recipes-header {
+    grid-area: 4 / 1 / span 1 / span 2;
+    margin-top: 50px;
+}
+
+.recipes {
+    grid-area: 5 / 1 / span 1 / span 2;
+}
+}
+
+.ingredients , .recipes{
+   border: solid 1px grey;
+   border-radius: 3px;
+   padding: 15px;
+}
+
+@media screen and (min-width: 400px) {
+
+.container {
+    display: grid; /* Benötigte Angabe für den den Grid-Container */
+    gap: 10px 80px; /* Abstände zwischen den Items */
+    grid-template-rows: 50px 30px auto;
+    grid-template-columns: 250px auto;
+}
+
+.room-name {
+    grid-area: 1 /* row */ / 1 /* column */ / span 1 / span 1;
+    justify-self: start;
+    width: 200px;
+}
+
+.room-id {
+    grid-area: 1 / 2 / span 1 / span 1;
+    justify-self: end;
+    width: 100px;
+}
+}
+
+.recipes-container {
+    display: grid;
+    grid-template-columns: 150px auto;
+    line-height: 25px;
+}
+
+.left-header, .right-header {
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.left-header {
+    grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.right-header {
+    grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.ingredients ul {
+    list-style-type: none;
+}
+
+.ingredients ul li {
+    padding-bottom: 10px;
+}
+
+.ingredients button, .ingredients-header button {
+    float: right;
+}
+
+.ingredients-header button {
+    margin-top: 5px;
+}
+
+.room-name-box {
+    border: solid 1px grey;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+.ingredients-header, .recipes-header {
+    font-weight: bold;
+    font-size: 24px;
+    padding-right: 15px;
+}    
+
+.ingredient-add-button, .ingredient-remove-button {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  font-weight: 600;
+  padding: 4px 12px;
+}
+
+.ingredient-remove-button {
+    background-color: RED;
+}
