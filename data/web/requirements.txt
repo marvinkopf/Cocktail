@@ -3,3 +3,5 @@ Django==4.0.4
 mysqlclient==2.1.0
 sqlparse==0.4.2
 djangorestframework==3.13.1
+pillow=9.1.1
+qrcode=7.3.1

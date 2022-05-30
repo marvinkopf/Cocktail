@@ -12,7 +12,7 @@ class BeispielSerializer(serializers.ModelSerializer):
 class RezeptSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rezept
-        fields = ['name', 'imgUrl', 'instructions']
+        fields = ['id', 'name', 'imgUrl', 'instruction']
 
 class ZutatSerializer(serializers.ModelSerializer):
     class Meta:
