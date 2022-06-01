@@ -1,0 +1,298 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+:root {
+  box-sizing: border-box;
+}
+
+
+
+/* Header */
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+}
+
+.signin-button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: .75em 1.5em;
+  border-style: solid;
+  border-width: .2em;
+  border-radius: .5em;
+  color: white;
+  border-color: black;
+  background-color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.signin-button:hover {
+  border-color: black;
+  background-color: white;
+  color: black;
+}
+
+/* Searchbar */
+.searchbar {
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.searchbar > input {
+  font-size: 1em;
+  min-width: 50ch;
+  padding: 1em 1.5em;
+  border: 1px solid grey;
+  border-right: none;
+  border-radius: 9999px 0 0 9999px;
+}
+
+.searchbar > button {
+  font-size: 1em;
+  padding: 0 1em;
+  border: 1px solid grey;
+  border-radius: 0 9999px 9999px 0;
+}
+
+/* Party Buttons */
+.party-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 3rem;
+}
+
+.party-buttons > a {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: .75em 1.5em;
+  border: .2em solid black;
+  border-radius: .5em;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.party-buttons > a:hover {
+  border-color: white;
+  background-color: black;
+  color: white;
+}
+
+/* Home */
+.cocktail-showcase {
+  display: flex;
+  justify-content: center;
+  gap: 6em;
+}
+
+/* Card */
+.card {
+  position: relative;
+  width: 20em;
+  height: 25em;
+  border-radius: 1em;
+  overflow: hidden;
+  transition: transform .1s ease-in-out;
+  box-shadow: .3em .3em 1em .5em rgb(0 0 0 / .4)
+}
+
+.card:hover,
+.card:focus {
+  transform: scale(1.05)
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-info > h2 {
+  color: white;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1.5em;
+  background: linear-gradient(0deg, black, 80%, transparent);
+}
+
+.card-info-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+  font-size: .8em;
+}
+
+.pill {
+  border-radius: 9999px;
+  background-color: white;
+  color: black;
+  padding: .5em 1em;
+}
+
+/* Cocktail List */
+.cocktail-list {
+  width: 160ch;
+  margin-inline: auto;
+}
+
+.cocktail-list > table {
+  width: 100%;
+}
+
+.cocktail-list > table th {
+  padding: .5em 0;
+}
+
+.cocktail-list > table td {
+  padding: .3em 0;
+}
+
+/* Cocktail Details */
+.cocktail-details {
+  display: grid;
+  grid-template-areas:
+    "picture other"
+    "picture other"
+    "picture other";
+  grid-template-columns: max-content 30em;
+  gap: 0 5em;
+  justify-content: center;
+  padding-top: 5em;
+}
+
+.cocktail-details > img {
+  grid-area: picture;
+  max-width: 30em;
+}
+
+.cocktail-details > .ingredients button {
+  display: none;
+}
+
+.cocktail-details > .ingredients ul {
+  overflow: hidden;
+  transition: transform .5s ease-in-out;
+  transform-origin: top;
+}
+
+.cocktail-details > .ingredients ul.hide {
+  transform: scaleY(0);
+}
+
+/* Party Create */
+.party-create {
+  display: grid;
+  margin: 0 2em;
+  grid-template-areas: 
+    "roomdetails roomdetails"
+    "ingredientlist cocktaillist";
+    grid-template-columns: 20em 1fr;
+    grid-template-rows: 3em 1fr;
+}
+
+.party-create .roomdetails-container {
+  grid-area: roomdetails;
+  display: flex;
+  justify-content: space-between
+}
+
+.party-create .roomdetails-container span{
+ font-size: 1.5rem;
+}
+
+.party-create .ingredient-list-container {
+  grid-area: ingredientlist;
+}
+
+.party-create .cocktail-list-container {
+  grid-area: cocktaillist;
+}
+
+.ingredient-list {
+  border: 1px solid gray;
+  border-radius: .3em;
+  padding: 1em;
+}
+
+.ingredient-list tr > td:first-child {
+  padding-right: 2em;
+}
+
+.cocktail-list-container table {
+  border: 1px solid gray;
+  border-radius: .3em;
+  padding: 1em;
+  width: 100%;
+}
+
+.add-ingredient-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgb(0 0 0 / .4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-ingredient-container {
+  background-color: white;
+  width: 60ch;
+  border-radius: .5em;
+  padding: 2em 2.5em;
+}
+
+.add-ingredient-container > h3 {
+  margin: 0 0 1em 0;
+}
+
+.add-ingredient-container > input {
+  font-size: 1rem;
+  margin-right: 1em;
+  padding: .5em 1em;
+  width: 35ch;
+}
+
+.add-ingredient-container > button {
+  font-size: 1rem;
+  padding: .5em 1em;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border: .2em solid black;
+  border-radius: .3em;
+}
+
+.add-ingredient-container > button:hover {
+  font-size: 1rem;
+  padding: .5em 1em;
+  background-color: black;
+  color: white;
+}
