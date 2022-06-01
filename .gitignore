@@ -4,4 +4,5 @@
 /data/web/db.sqlite3
 /data/web/main/migrations
 /.venv
+/data/web/react-app/node_modules
 
