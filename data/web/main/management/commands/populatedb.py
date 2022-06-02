@@ -32,9 +32,9 @@ class Command(BaseCommand):
 
         # Clean the database
         self.stdout.write("CLEANING DATABASE FROM ALL ENTRIES..")
+        Rezept_Zutat.objects.all().delete()
         Rezept.objects.all().delete()
         Zutat.objects.all().delete()
-        Rezept_Zutat.objects.all().delete()
 
         url = requests.get(
             "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
@@ -48,14 +48,21 @@ class Command(BaseCommand):
 
         # iterate over every ingredient in list and transact to db
         for ingr in ingrs:
-            try:
-                z = Zutat(name=ingr["strIngredient1"])
-                z.save()
-                self.stdout.write(
-                    f"INSERTING ENTRY {z.name} INTO TABLE 'ZUTAT'.. SUCCESS!"
-                )
-            except IntegrityError:
-                self.stderr.write(f"ENTRY {z.name} ALREADY EXISTS.. SKIPPING")
+            if (
+                ingr["strIngredient1"] is None
+                or Zutat.objects.filter(name=ingr["strIngredient1"]).values()
+                is not None
+            ):
+                pass
+            else:
+                try:
+                    z = Zutat(name=ingr["strIngredient1"])
+                    z.save()
+                    self.stdout.write(
+                        f"INSERTING ENTRY {z.name} INTO TABLE 'ZUTAT'.. SUCCESS!"
+                    )
+                except IntegrityError:
+                    self.stderr.write(f"ENTRY {z.name} ALREADY EXISTS.. SKIPPING")
 
         self.stdout.write("POPULATING TABLE 'ZUTAT' FINISHED!\n\n")
 
@@ -87,8 +94,6 @@ class Command(BaseCommand):
 
             try:
                 r = Rezept()
-                # parse id to integer
-                r.id = int(drink["idDrink"])
                 r.name = drink["strDrink"]
                 if drink["strAlcoholic"] == "Alcoholic":
                     r.is_alcoholic = True

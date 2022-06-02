@@ -6,14 +6,7 @@ from main.models import Rezept, Zutat, Rezept_Zutat
 class RezeptSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rezept
-        fields = [
-            "id",
-            "name",
-            "is_alcoholic",
-            "instruction_en",
-            "instruction_de",
-            "img_url",
-        ]
+        fields = "__all__"
 
 
 class ZutatSerializer(serializers.ModelSerializer):
