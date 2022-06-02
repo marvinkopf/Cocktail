@@ -61,7 +61,7 @@ class Command(BaseCommand):
 
         # fetch recipes
         for ch in range(97, 123):
-            self.populate_recipe(97)
+            self.populate_recipe(ch)
 
         stop: float = timeit.default_timer()
         exec: float = stop - start
