@@ -11,12 +11,12 @@ class Zutat(models.Model):
 
 
 class Rezept(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     is_alcoholic = models.BooleanField(default=False)
     instruction_en = models.CharField(max_length=1500, null=True, blank=True)
     instruction_de = models.CharField(max_length=1500, null=True, blank=True)
     img_url = models.CharField(max_length=200)
-    # ingredients = models.ManyToManyField(Zutat, through="Rezept_Zutat")
+    ingredients = models.ManyToManyField(Zutat, through="Rezept_Zutat")
 
     def __str__(self):
         return self.name

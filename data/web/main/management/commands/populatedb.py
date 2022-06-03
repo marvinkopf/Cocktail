@@ -1,26 +1,9 @@
 import requests
 import json
 import timeit
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db import IntegrityError
 from main.models import Rezept, Zutat, Rezept_Zutat
-
-
-"""
-REZEPT
-idDrink
-strDrink
-strAlcoholic
-strInstructions
-strInstructionsDE
-strDrinkThumb
-
-ZUTAT
-strIngredient[1-15]
-
-REZEPT_ZUTAT
-strMeasure[1-15]
-"""
 
 
 class Command(BaseCommand):
@@ -84,7 +67,6 @@ class Command(BaseCommand):
         data = json.loads(s)
         drinks = data["drinks"]
 
-        start = timeit.default_timer()
         self.stdout.write("STARTING POPULATE TABLE REZEPT")
 
         for drink in drinks:
