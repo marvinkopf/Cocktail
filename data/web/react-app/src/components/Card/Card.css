@@ -1,0 +1,39 @@
+.card {
+  position: relative;
+  width: 20em;
+  height: 25em;
+  border-radius: 1em;
+  overflow: hidden;
+  transition: transform .1s ease-in-out;
+  box-shadow: .3em .3em 1em .5em rgb(0 0 0 / .4)
+}
+
+.card:hover,
+.card:focus-within {
+  transform: scale(1.05)
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-info > h2 {
+  color: white;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1.5em;
+  background: linear-gradient(0deg, black, 80%, transparent);
+}
+
+.card-info-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+  font-size: .8em;
+}

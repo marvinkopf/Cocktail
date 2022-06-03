@@ -1,18 +1,20 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -20,58 +22,17 @@ code {
   box-sizing: border-box;
 }
 
-
+main {
+  padding-bottom: 2em;
+}
 
 /* Header */
 .App-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1em 2em;
-}
-
-.signin-button {
-  font-size: 1rem;
-  font-weight: bold;
-  padding: .75em 1.5em;
-  border-style: solid;
-  border-width: .2em;
-  border-radius: .5em;
-  color: white;
-  border-color: black;
-  background-color: black;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.signin-button:hover {
-  border-color: black;
-  background-color: white;
-  color: black;
-}
-
-/* Searchbar */
-.searchbar {
-  font-size: 1.3rem;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3rem;
-}
-
-.searchbar > input {
-  font-size: 1em;
-  min-width: 50ch;
-  padding: 1em 1.5em;
-  border: 1px solid grey;
-  border-right: none;
-  border-radius: 9999px 0 0 9999px;
-}
-
-.searchbar > button {
-  font-size: 1em;
-  padding: 0 1em;
-  border: 1px solid grey;
-  border-radius: 0 9999px 9999px 0;
 }
 
 /* Party Buttons */
@@ -79,97 +40,58 @@ code {
   display: flex;
   justify-content: center;
   gap: 1em;
-  margin-bottom: 3rem;
-}
-
-.party-buttons > a {
-  font-size: 1rem;
-  font-weight: bold;
-  padding: .75em 1.5em;
-  border: .2em solid black;
-  border-radius: .5em;
-  background-color: white;
-  color: black;
-  text-decoration: none;
-}
-
-.party-buttons > a:hover {
-  border-color: white;
-  background-color: black;
-  color: white;
 }
 
 /* Home */
+.home {
+  margin-inline: auto;
+  max-width: 80em;
+}
+
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
 .cocktail-showcase {
   display: flex;
   justify-content: center;
-  gap: 6em;
-}
-
-/* Card */
-.card {
-  position: relative;
-  width: 20em;
-  height: 25em;
-  border-radius: 1em;
-  overflow: hidden;
-  transition: transform .1s ease-in-out;
-  box-shadow: .3em .3em 1em .5em rgb(0 0 0 / .4)
-}
-
-.card:hover,
-.card:focus {
-  transform: scale(1.05)
-}
-
-.card img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-info > h2 {
-  color: white;
-}
-
-.card-info {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 1.5em;
-  background: linear-gradient(0deg, black, 80%, transparent);
-}
-
-.card-info-ingredients {
-  display: flex;
   flex-wrap: wrap;
-  gap: .5em;
-  font-size: .8em;
+  gap: 6em;
 }
 
 .pill {
   border-radius: 9999px;
   background-color: white;
   color: black;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
 }
 
-/* Cocktail List */
-.cocktail-list {
-  width: 160ch;
+/* Search Results */
+.search-results {
   margin-inline: auto;
+  max-width: 70em;
 }
 
-.cocktail-list > table {
-  width: 100%;
+.search-results .searchbar-container {
+  margin-bottom: 2em;
 }
 
-.cocktail-list > table th {
-  padding: .5em 0;
+.search-results-view-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
 }
 
-.cocktail-list > table td {
-  padding: .3em 0;
+.search-results-view-toggle > *:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-results-view-toggle > *:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /* Cocktail Details */
@@ -196,7 +118,7 @@ code {
 
 .cocktail-details > .ingredients ul {
   overflow: hidden;
-  transition: transform .5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
   transform-origin: top;
 }
 
@@ -208,21 +130,21 @@ code {
 .party-create {
   display: grid;
   margin: 0 2em;
-  grid-template-areas: 
+  grid-template-areas:
     "roomdetails roomdetails"
     "ingredientlist cocktaillist";
-    grid-template-columns: 20em 1fr;
-    grid-template-rows: 3em 1fr;
+  grid-template-columns: 20em 1fr;
+  grid-template-rows: 3em 1fr;
 }
 
 .party-create .roomdetails-container {
   grid-area: roomdetails;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
-.party-create .roomdetails-container span{
- font-size: 1.5rem;
+.party-create .roomdetails-container span {
+  font-size: 1.5rem;
 }
 
 .party-create .ingredient-list-container {
@@ -235,7 +157,7 @@ code {
 
 .ingredient-list {
   border: 1px solid gray;
-  border-radius: .3em;
+  border-radius: 0.3em;
   padding: 1em;
 }
 
@@ -245,7 +167,7 @@ code {
 
 .cocktail-list-container table {
   border: 1px solid gray;
-  border-radius: .3em;
+  border-radius: 0.3em;
   padding: 1em;
   width: 100%;
 }
@@ -256,7 +178,7 @@ code {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color:rgb(0 0 0 / .4);
+  background-color: rgb(0 0 0 / 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -265,7 +187,7 @@ code {
 .add-ingredient-container {
   background-color: white;
   width: 60ch;
-  border-radius: .5em;
+  border-radius: 0.5em;
   padding: 2em 2.5em;
 }
 
@@ -276,23 +198,23 @@ code {
 .add-ingredient-container > input {
   font-size: 1rem;
   margin-right: 1em;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   width: 35ch;
 }
 
 .add-ingredient-container > button {
   font-size: 1rem;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   font-weight: bold;
   background-color: white;
   color: black;
-  border: .2em solid black;
-  border-radius: .3em;
+  border: 0.2em solid black;
+  border-radius: 0.3em;
 }
 
 .add-ingredient-container > button:hover {
   font-size: 1rem;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   background-color: black;
   color: white;
 }

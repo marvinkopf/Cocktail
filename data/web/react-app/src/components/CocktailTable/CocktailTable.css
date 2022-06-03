@@ -1,0 +1,32 @@
+.cocktail-table {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border-radius: .5em;
+  overflow: hidden;
+}
+
+.cocktail-table-header {
+  display: contents;
+  background-color: rgb(200, 200, 200);
+}
+
+.cocktail-table-header > * {
+  background-color: inherit;
+  padding: .5em .3em;
+}
+
+.cocktail-table-row {
+  display: contents;
+  color: black;
+}
+
+a.cocktail-table-row:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.cocktail-table-row > * {
+  padding: .3em .3em;
+  background-color: inherit;
+}
