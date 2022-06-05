@@ -7,7 +7,7 @@ import { getRoom, removeIngFromRoom } from "../models/room";
 
 export default function PartyCreate() {
   //const { id } = useParams()
-  const id = "DGHD";
+  const id = 1;
   const [room, setRoom] = useState({});
   const [showAddingIng, setAddingIng] =useState(false);
   
@@ -17,7 +17,7 @@ export default function PartyCreate() {
   useEffect(() => {getRoom(id).then(result => setRoom(result))},[state])
 
   function removeIng(ing) {
-    useEffect(() => {removeIngFromRoom(room.id, ing).then(result => setState(Math.random()));},[]);
+    removeIngFromRoom(room.id, ing).then(result => setState(Math.random()));
   }
   
   return (

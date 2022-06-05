@@ -6,7 +6,7 @@ export default function IngredientList({ ingredients, removeIng }) {
           <tr key={idx}>
             <td>{ingredient.name}</td>
             <td>
-              <button onClick={() => removeIng(idx)} className="ingredient-remove-button">Remove</button>
+              <button onClick={() => removeIng(ingredient.id)} className="ingredient-remove-button">Remove</button>
             </td>
           </tr>
         ))}
