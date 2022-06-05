@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'react-app/public/index.html')
+def index(request, resource):
+    return render(request, 'react-app/build/index.html')

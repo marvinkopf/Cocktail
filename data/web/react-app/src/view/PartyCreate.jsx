@@ -1,67 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IngredientList from "../components/IngredientList";
+import AddIngComponent from "../components/AddIng/AddIng";
+import RecipeCompactComponent from "../components/RecipeCompact/RecipeCompact";
+import { useParams} from "react-router-dom";
+import { getRoom, removeIngFromRoom } from "../models/room";
 
 export default function PartyCreate() {
-  const [addIngredientOpen, setAddIngredientOpen] = useState(false);
+  //const { id } = useParams()
+  const id = "DGHD";
+  const [room, setRoom] = useState({});
+  const [showAddingIng, setAddingIng] =useState(false);
+  
+    /* https://stackoverflow.com/a/66186184 */
+  const [state, setState] = useState('');
+  
+  useEffect(() => {getRoom(id).then(result => setRoom(result))},[state])
 
+  function removeIng(ing) {
+    useEffect(() => {removeIngFromRoom(room.id, ing).then(result => setState(Math.random()));},[]);
+  }
+  
   return (
     <div className="party-create">
       <div className="roomdetails-container">
         <label>
-          Raumname: <br /> <input type="text" defaultValue="Prakt2" />
+          Raumname: <br /> <div className="room-name-box"> {room.name}</div>
         </label>
 
-        <span>Raum ID: WT2H5B0</span>
+        <span>Raum ID: {room.id}</span>
       </div>
       <div className="ingredient-list-container">
         <h2>
           Ingredients{" "}
-          <button onClick={() => setAddIngredientOpen(true)}>Add</button>
+          <button className="ingredient-add-button" onClick={() => setAddingIng(true)}>Add</button>
         </h2>
-        <IngredientList />
+        <IngredientList removeIng={removeIng} ingredients={room.ingredients} />
       </div>
 
       <div className="cocktail-list-container">
         <h2>Cocktail Recipes</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Ingredients</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Martini</td>
-              <td>Gin, Dry Vermouth, Olive</td>
-            </tr>
-            <tr>
-              <td>Manhattan</td>
-              <td>
-                Sweet Vermouth, Bourbon, Angostura bitters, Ice, Maraschino
-                cherry, Orange peel
-              </td>
-            </tr>
-            <tr>
-              <td>Cosmopolitan</td>
-              <td>Absolut Citron, Lime juice, Cointreau, Cranberry juice</td>
-            </tr>
-          </tbody>
-        </table>
+         <div className="recipes">
+              <div className="recipes-container">
+                  <div className="left-header">Name</div>
+                  <div className="right-header">Ingredients</div>
+                  {room.recipes?.map((rec) =><RecipeCompactComponent key={rec.id} recipe={rec} />)}
+              </div>
+          </div>
       </div>
 
-      {addIngredientOpen ? (
-        <div
-          className="add-ingredient-backdrop"
-          onClick={() => setAddIngredientOpen(false)}
-        >
-          <div className="add-ingredient-container">
-            <h3>Add Ingredient</h3>
-            <input type="text" />
-            <button>Add</button>
-          </div>
-        </div>
-      ) : null}
+      {showAddingIng && <AddIngComponent addIngChanger={(v) => setAddingIng(v)} stateChanger={setState} room={room}/>}
     </div>
   );
 }

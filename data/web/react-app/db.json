@@ -1,0 +1,265 @@
+{
+  "rooms": [
+    {
+      "id": "DGHD",
+      "name": 0.6252620371400561,
+      "ingredients": [
+        {
+          "id": 1,
+          "name": "Vodka"
+        },
+        {
+          "id": 2,
+          "name": "Gin"
+        },
+        {
+          "id": 3,
+          "name": "Lime"
+        },
+        {
+          "id": 4,
+          "name": "Mint"
+        },
+        {
+          "id": 5,
+          "name": "Dry Vermouth"
+        },
+        {
+          "name": "lk"
+        },
+        {
+          "name": "lk"
+        },
+        {
+          "name": "lkl"
+        },
+        {
+          "name": "67"
+        },
+        {
+          "name": "hhh"
+        },
+        {
+          "name": "hhhh"
+        },
+        {
+          "name": "jk"
+        },
+        {
+          "name": "knkn"
+        },
+        {
+          "name": "nol"
+        },
+        {
+          "name": "dgh"
+        },
+        {
+          "name": "hj"
+        },
+        {
+          "name": "hj"
+        },
+        {
+          "name": "lol"
+        },
+        {
+          "name": "lol"
+        },
+        {
+          "name": "ghjk"
+        },
+        {
+          "name": "ghjk"
+        }
+      ],
+      "recipes": [
+        {
+          "id": 1,
+          "name": "Pina Colada",
+          "ingredients": [
+            {
+              "id": 1,
+              "name": "Vodka"
+            },
+            {
+              "id": 2,
+              "name": "Gin"
+            },
+            {
+              "id": 3,
+              "name": "Lime"
+            },
+            {
+              "id": 4,
+              "name": "Mint"
+            },
+            {
+              "id": 5,
+              "name": "Dry Vermouth"
+            },
+            {
+              "id": 6,
+              "name": "Dry Vermouth"
+            },
+            {
+              "id": 7,
+              "name": "Dry Vermouth"
+            },
+            {
+              "id": 8,
+              "name": "Dry Vermouth"
+            },
+            {
+              "id": 9,
+              "name": "Dry Vermouth"
+            },
+            {
+              "id": 10,
+              "name": "Dry Vermouth"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "P2",
+          "ingredients": [
+            {
+              "id": 1,
+              "name": "Vodka"
+            },
+            {
+              "id": 2,
+              "name": "Gin"
+            },
+            {
+              "id": 3,
+              "name": "Lime"
+            },
+            {
+              "id": 4,
+              "name": "Mint"
+            },
+            {
+              "id": 5,
+              "name": "Dry Vermouth"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "P3",
+          "ingredients": [
+            {
+              "id": 1,
+              "name": "Vodka"
+            },
+            {
+              "id": 2,
+              "name": "Gin"
+            },
+            {
+              "id": 3,
+              "name": "Lime"
+            },
+            {
+              "id": 4,
+              "name": "Mint"
+            },
+            {
+              "id": 5,
+              "name": "Dry Vermouth"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "P4",
+          "ingredients": [
+            {
+              "id": 1,
+              "name": "Vodka"
+            },
+            {
+              "id": 2,
+              "name": "Gin"
+            },
+            {
+              "id": 3,
+              "name": "Lime"
+            },
+            {
+              "id": 4,
+              "name": "Mint"
+            },
+            {
+              "id": 5,
+              "name": "Dry Vermouth"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Vodka"
+    },
+    {
+      "id": 2,
+      "name": "Gin"
+    },
+    {
+      "id": 3,
+      "name": "Lime"
+    },
+    {
+      "id": 4,
+      "name": "Mint"
+    },
+    {
+      "id": 5,
+      "name": "Dry Vermouth"
+    }
+  ],
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Pina Colada",
+      "ingredients": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "name": "P2",
+      "ingredients": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "name": "P3",
+      "ingredients": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": 4,
+      "name": "P4",
+      "ingredients": [
+        1,
+        2,
+        3,
+        5
+      ]
+    }
+  ]
+}
