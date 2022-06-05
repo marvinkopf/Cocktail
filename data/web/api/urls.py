@@ -1,9 +1,13 @@
-from django.urls import path
-from api import views
+from api.views import RezeptList, ZutatList, RezeptDetail
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
+
+router = DefaultRouter()
+router.register(r"rezept", RezeptDetail, basename="rezept-detailcreate")
+router.register(r"zutaten", ZutatList, basename="zutat-listcreate")
 
 urlpatterns = [
-    path('api/beispiel/', views.BeispielList.as_view()),
-    path('api/rezept/', views.RezeptList.as_view()),
-    path('api/zutat/', views.ZutatList.as_view()),
+    path("", include(router.urls)),
+    path("rezepte/", RezeptList.as_view(), name="rezept-listcreate"),
 ]

@@ -1,58 +1,61 @@
-from api import serializers
-from main.models import Beispiel, Rezept, Zutat
-from api.serializers import BeispielSerializer, RezeptSerializer, ZutatSerializer
+from django.shortcuts import get_object_or_404
+from main.models import Rezept, Zutat
+from api.serializers import (
+    RezeptSerializer,
+    ZutatSerializer,
+)
+from rest_framework import generics
+from rest_framework import viewsets
+from rest_framework import filters
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 
-
-class BeispielList(APIView):
+class RezeptList(generics.ListAPIView):
     """
-    Beispiel für class based view ohne generics.
+    Create a list based on search or sort pattern.
     """
-    def get(self, request):
-        beispiele = Beispiel.objects.all()
-        serializer = BeispielSerializer(beispiele, many=True)
-        return Response(serializer.data)
 
-    def post(self, request):
-        serializer = BeispielSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer_class = RezeptSerializer
+    # queryset = Rezept.objects.all()
+    filter_backends = [filters.SearchFilter]
+    search_fields = ["$name"]
+
+    def get_queryset(self):
+        search = self.request.query_params.get("search")
+        sort = self.request.query_params.get("sort")
+        limit = self.request.query_params.get("limit")
+
+        if sort:
+            return Rezept.objects.order_by("?")[: int(limit)]
+        else:
+            return Rezept.objects.filter(name=search)
+
+    # '^' Starts-with search.
+    # '=' Exact matches.
+    # '@' Full-text search. (Currently only supported Django's PostgreSQL backend.)
+    # '$' Regex search.
 
 
-class RezeptList(APIView):
+class RezeptDetail(viewsets.ModelViewSet):
     """
-    Liste alle Rezepte und die dazugehörigen Zutaten auf oder erstelle ein neues Rezept.
+    Create detailed list of recipes.
     """
-    def get(self, request):
-        rezepte = Rezept.objects.all()
-        serializer = RezeptSerializer(rezepte, many=True)
-        return Response(serializer.data)
 
-    def post(self, request):
-        serializer = RezeptSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer_class = RezeptSerializer
+
+    def get_object(self, queryset=None, **kwargs):
+        item = self.kwargs.get("pk")
+        return get_object_or_404(Rezept, id=item)
+
+    def get_queryset(self):
+        return Rezept.objects.all()
 
 
-class ZutatList(APIView):
+class ZutatList(viewsets.ModelViewSet):
     """
-    Liste alle Zutaten auf oder füge neue hinzu.
+    Create a list of recipes.
     """
-    def get(self, request):
-        zutaten = Zutat.objects.all()
-        serializer = ZutatSerializer(zutaten, many=True)
-        return Response(serializer.data)
 
-    def post(self, request):
-        serializer = ZutatSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer_class = ZutatSerializer
+
+    def get_queryset(self):
+        return Zutat.objects.all()
