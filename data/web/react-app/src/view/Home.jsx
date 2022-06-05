@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Card from "../components/Card";
+import { useNavigate } from "react-router-dom";
+import CocktailListCards from "../components/CocktailListCards";
+import Searchbar from "../components/Searchbar";
+import { useMixbarTitle } from "../hooks/useMixbarTitle";
 import { getRandomCocktails } from "../models/cocktails";
 
 export default function Home() {
   const navigate = useNavigate();
   const [cocktails, setCocktails] = useState([]);
+
+  useMixbarTitle("Home");
 
   useEffect(() => {
     getRandomCocktails(3).then((drinks) => setCocktails(drinks));
@@ -23,24 +27,12 @@ export default function Home() {
 
   return (
     <div className="home">
-      <form className="searchbar" onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder="Finde deinen Cocktail"
-          name="searchtext"
-        />
-        <button>Suche</button>
-      </form>
-
-      <div className="party-buttons">
-        <Link to="/party/create">Party Erstellen</Link>
-        <Link to="/party/join">Party Beitreten</Link>
+      <div className="searchbar-container">
+        <Searchbar onSubmit={handleSearch} />
       </div>
 
       <div className="cocktail-showcase">
-        {cocktails.map((cocktail) => (
-          <Card key={cocktail.id} details={cocktail} />
-        ))}
+        <CocktailListCards cocktails={cocktails} />
       </div>
     </div>
   );

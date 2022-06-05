@@ -2,9 +2,10 @@ import logoUrl from "./assets/mixbar.png";
 import Home from "./view/Home";
 import { Link, Route, Routes } from "react-router-dom";
 import CocktailDetails from "./view/CocktailDetails";
-import CocktailList from "./view/CocktailList";
+import SearchResults from "./view/SearchResults";
 import PartyJoin from "./view/PartyJoin";
 import PartyCreate from "./view/PartyCreate";
+import Button from "./components/Button";
 
 function App() {
   return (
@@ -13,14 +14,15 @@ function App() {
         <Link to="/">
           <img src={logoUrl} alt="Mixbar" />
         </Link>
-        <Link className="signin-button" to="/signin">
-          Sign In
-        </Link>
+        <div className="party-buttons">
+          <Button href="/party/create">Party Erstellen</Button>
+          <Button href="/party/join">Party Beitreten</Button>
+        </div>
       </header>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cocktails" element={<CocktailList />} />
+          <Route path="/cocktails" element={<SearchResults />} />
           <Route path="/cocktails/:id" element={<CocktailDetails />} />
           <Route path="/party/create" element={<PartyCreate />} />
           <Route path="/party/join" element={<PartyJoin />} />

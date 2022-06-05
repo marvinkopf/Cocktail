@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useMixbarTitle } from "../hooks/useMixbarTitle";
 import { getCocktail } from "../models/cocktails";
 
 export default function CocktailDetails() {
@@ -12,6 +13,8 @@ export default function CocktailDetails() {
     ingredients: [],
     instructions: "",
   });
+
+  useMixbarTitle(cocktail.name);
 
   useEffect(() => {
     getCocktail(params.id).then(setCocktail);

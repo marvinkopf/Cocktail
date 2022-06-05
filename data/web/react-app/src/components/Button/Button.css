@@ -1,0 +1,40 @@
+.button {
+  --fg-color: black;
+  --bg-color: white;
+
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.75em 1.5em;
+  text-decoration: none;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  border: 0.2rem solid var(--fg-color);
+  border-radius: 0.5rem;
+}
+
+.button--primary {
+  --fg-color: white;
+  --bg-color: black;
+  border-color: var(--bg-color);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--fg-color);
+  border-color: var(--bg-color);
+  color: var(--bg-color);
+}
+
+.button--active {
+  --fg-color: white;
+  --bg-color: black;
+  cursor: default;
+}
+
+.button--active:hover,
+.button--active:focus {
+  background-color: var(--bg-color);
+  border-color: var(--fg-color);
+  color: var(--fg-color);
+}
