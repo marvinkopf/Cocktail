@@ -1,24 +1,15 @@
 from rest_framework import serializers
 
-from main.models import Beispiel, Rezept, Zutat
-
-
-class BeispielSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Beispiel
-        fields = ['name']
+from main.models import Rezept, Zutat
 
 
 class RezeptSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rezept
-        fields = ['name', 'imgUrl', 'instructions']
+        fields = "__all__"
+
 
 class ZutatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Zutat
-        fields = ['name', 'unit', 'recipes']
-
-
-    
-
+        fields = "__all__"
