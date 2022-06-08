@@ -71,15 +71,10 @@ class RaumList(viewsets.ModelViewSet):
         
 class RaumIng(APIView):
     def delete(self, request, raum_id):
-        ''' Updates the todo item with given todo_id if exists '''
         raum_instance = Raum.objects.get(id=raum_id)
         ingredient_instance = Zutat.objects.filter(id=request.data["id"])
         if not raum_instance:
             return Response( {"res": "Object with room id does not exists"}, status=status.HTTP_400_BAD_REQUEST )
-        #data = { 
-         #   'task': request.data.get('task'), 
-          #  'completed': request.data.get('completed'), 
-           # 'user': request.user.id } 
         
         raum_instance.ingredients.remove(request.data["id"])
         for rezept in Rezept.objects.filter(ingredients=request.data["id"]):
@@ -88,21 +83,30 @@ class RaumIng(APIView):
         return Response( {"res": "Object deleted!"}, status=status.HTTP_200_OK )
         
     def post(self, request, raum_id):
+        # Load the ingredient object
         ingredient_instance = Zutat.objects.filter(name=request.data["name"])[0]
+        
+        # Load the room object
         raum_instance = Raum.objects.get(id=raum_id)
         
+        # Add the ingredient to the room
         raum_instance.ingredients.add(ingredient_instance)
-        arrays = []
+        
+        # For each ingredient, get all the possible recipes.
+        possible_recipes = []
         room_ings = raum_instance.ingredients.all()
         for ing in room_ings:
             rezepte = Rezept.objects.filter(ingredients=ing.id)
-            arrays = arrays + list(rezepte)
+            possible_recipes = possible_recipes + list(rezepte)
             
+        # Delete all recipes from room
         raum_instance.recipes.clear()
-        for recipe in arrays:
-            print(recipe)
+        
+        for recipe in possible_recipes:
+            # For each ingredient in recipe, check if recipe is in room_ings
+            # All checks if all ingredients fullfill the condition
             if all([x in room_ings for x in recipe.ingredients.all()]):
                 raum_instance.recipes.add(recipe)
             
         
-        return Response( {"res": "Object deleted!"}, status=status.HTTP_200_OK )        
+        return Response( {"res": "Ingredient added"}, status=status.HTTP_200_OK )        

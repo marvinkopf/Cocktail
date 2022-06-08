@@ -1,21 +1,14 @@
 import "./RecipeCompact.css";
+import { Link } from "react-router-dom";
+import CocktailRow from "../CocktailTable/CocktailRow";
 
 function RecipeCompactComponent(props) {
     let recipe = props.recipe;
   return (
-    <div className="recipe-compact">
-        <div className="recipe-compact-column1">{props.recipe.name}</div>
-        <div className="recipe-compact-column2"> {recipe.ingredients?.map((ingredient, index, list) => {
-            if (index === list.length - 1)
-                return " " + ingredient.name;
-            else if(index === 0)
-                return ingredient.name + ",";
-            else
-                return " " +ingredient.name + ",";
-
-        })}</div>
-
-    </div>
+      <Link className="cocktail-table-row" to={`/cocktails/${recipe.id}`}>
+      <div>{recipe.name}</div>
+      <div>{recipe.ingredients?.map((ingredient) => ingredient.name).join(', ')}</div>
+    </Link>
   );
 }
 
