@@ -2,10 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-
 class Zutat(models.Model):
     name = models.CharField(max_length=200)
-
     def __str__(self):
         return self.name
 
@@ -20,7 +18,6 @@ class Rezept(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Rezept_Zutat(models.Model):
     ingredient = models.ForeignKey(Zutat, on_delete=models.DO_NOTHING)

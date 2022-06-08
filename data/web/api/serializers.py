@@ -2,8 +2,6 @@ from rest_framework import serializers
 
 from main.models import Rezept, Zutat, Raum
 
-
-
 class ZutatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Zutat

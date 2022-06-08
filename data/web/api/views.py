@@ -37,7 +37,6 @@ class RezeptList(generics.ListAPIView):
     # '@' Full-text search. (Currently only supported Django's PostgreSQL backend.)
     # '$' Regex search.
 
-
 class RezeptDetail(viewsets.ModelViewSet):
     """
     Create detailed list of recipes.
@@ -52,7 +51,6 @@ class RezeptDetail(viewsets.ModelViewSet):
     def get_queryset(self):
         return Rezept.objects.all()
 
-
 class ZutatList(viewsets.ModelViewSet):
     """
     Create a list of recipes.
@@ -62,7 +60,7 @@ class ZutatList(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Zutat.objects.all()
-
+      
 class RaumList(viewsets.ModelViewSet):
     serializer_class = RaumSerializer
     
