@@ -5,6 +5,7 @@ import CocktailDetails from "./view/CocktailDetails";
 import SearchResults from "./view/SearchResults";
 import PartyJoin from "./view/PartyJoin";
 import PartyCreate from "./view/PartyCreate";
+import Party from "./view/Party";
 import Button from "./components/Button";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/cocktails/:id" element={<CocktailDetails />} />
           <Route path="/party/create" element={<PartyCreate />} />
           <Route path="/party/join" element={<PartyJoin />} />
+          <Route path ="/party/:id" element={<Party />} />
         </Routes>
       </main>
     </div>
