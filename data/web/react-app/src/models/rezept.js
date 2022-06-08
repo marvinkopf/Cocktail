@@ -1,7 +1,13 @@
 import { getZutatenFromIdArray } from "./zutat";
 
-export function getRezept(id) {
-  return fetch(`http://localhost:8000/api/rezept/${id}`);
+export async function getRezept(id) {
+  const rezept = await fetch(`http://localhost:8000/api/rezept/${id}`).then(
+    (res) => res.json()
+  );
+
+  rezept.ingredients = await getZutatenFromIdArray(rezept.ingredients);
+
+  return rezept;
 }
 
 export async function getRandomRezept(num) {
