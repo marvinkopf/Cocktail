@@ -1,5 +1,7 @@
+import { api  } from "./room";
+
 export function getZutat(id) {
-  return fetch(`http://localhost:8000/api/zutaten/${id}`).then((res) =>
+  return fetch(api +`/api/zutaten/${id}`).then((res) =>
     res.json()
   );
 }
@@ -15,5 +17,5 @@ export async function getZutatenFromIdArray(array) {
 }
 
 export function getZutatList() {
-  return fetch(`http://localhost:8000/api/zutaten`).then((res) => res.json());
+  return fetch(api +`/api/zutaten`).then((res) => res.json());
 }

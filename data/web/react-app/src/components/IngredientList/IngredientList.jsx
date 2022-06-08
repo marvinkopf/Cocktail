@@ -1,24 +1,17 @@
-export default function IngredientList({ ingredients }) {
-  ingredients = [
-    { name: "Vodka" },
-    { name: "Gin" },
-    { name: "Lime" },
-    { name: "Mint" },
-    { name: "Dry Vermouth" },
-  ];
-
-  return (
-    <table className="ingredient-list">
+export default function IngredientList({ ingredients, removeIng }) {
+  return (<div className="ingredient-list">
+    <table>
       <tbody>
-        {ingredients.map((ingredient, idx) => (
+        {ingredients?.map((ingredient, idx) => (
           <tr key={idx}>
             <td>{ingredient.name}</td>
             <td>
-              <button>Remove</button>
+              <button onClick={() => removeIng(ingredient.id)} className="ingredient-remove-button">Remove</button>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
