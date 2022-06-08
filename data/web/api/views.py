@@ -27,7 +27,7 @@ class RezeptList(generics.ListAPIView):
         if sort:
             return Rezept.objects.order_by("?")[: int(limit)]
         else:
-            return Rezept.objects.filter(name=search)
+            return Rezept.objects.all()
 
     # '^' Starts-with search.
     # '=' Exact matches.
