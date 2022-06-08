@@ -1,7 +1,7 @@
 export function getDjangoUrl() {
-    return "localhost:8000";
+    return "http://3.90.83.207:8000";
 }
 
 export function getNpmUrl() {
-    return "localhost:3000";
+    return "http://3.90.83.207:3000";
 }

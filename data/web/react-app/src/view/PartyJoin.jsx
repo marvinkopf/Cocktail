@@ -1,15 +1,24 @@
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
+
 export default function PartyJoin() {
+  const [input, setInput]  = useState("");
   const handleScanQr = (e) => {
     navigator.mediaDevices.getUserMedia({ video: true });
   };
 
+  function handleChange(event)
+      {
+          setInput(event.target.value);
+      }
   return (
     <div>
       <h1>Einer Party Beitreten</h1>
 
       <div>
         Benutze eine PIN
-        <input type="text" />
+        <input value={input} onChange={handleChange} type="text" />
+        <Link to={"/party/"+input}><input type="button" value="Enter"/></Link>
       </div>
       <div>
         Oder scanne einen QR-Code
