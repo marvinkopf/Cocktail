@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useMixbarTitle } from "../hooks/useMixbarTitle";
-import { getCocktail } from "../models/cocktails";
+import { getRezept } from "../models/rezept";
 
 export default function CocktailDetails() {
   const params = useParams();
@@ -9,7 +9,7 @@ export default function CocktailDetails() {
   const [cocktail, setCocktail] = useState({
     id: -1,
     name: "",
-    picture: "",
+    img_url: "",
     ingredients: [],
     instructions: "",
   });
@@ -17,12 +17,12 @@ export default function CocktailDetails() {
   useMixbarTitle(cocktail.name);
 
   useEffect(() => {
-    getCocktail(params.id).then(setCocktail);
+    getRezept(params.id).then(setCocktail);
   }, []);
 
   return (
     <div className="cocktail-details">
-      <img src={cocktail.picture} alt={cocktail.name} />
+      <img src={cocktail.img_url} alt={cocktail.name} />
       <h1>{cocktail.name}</h1>
 
       <div className="ingredients">
@@ -31,9 +31,9 @@ export default function CocktailDetails() {
           {showIngredients ? "Hide" : "Show"}
         </button>
         <ul className={showIngredients ? "" : "hide"}>
-          {cocktail.ingredients.map((ingredient, idx) => (
-            <li key={idx}>
-              {ingredient.amount} {ingredient.name}
+          {cocktail.ingredients.map((ingredient) => (
+            <li key={ingredient.id}>
+              {ingredient.measure} {ingredient.name}
             </li>
           ))}
         </ul>
@@ -41,7 +41,7 @@ export default function CocktailDetails() {
 
       <div className="instructions">
         <h2>Instructions</h2>
-        <p>{cocktail.instructions}</p>
+        <p>{cocktail.instruction_en}</p>
       </div>
     </div>
   );

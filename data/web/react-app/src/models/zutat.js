@@ -5,13 +5,13 @@ export function getZutat(id) {
 }
 
 export async function getZutatenFromIdArray(array) {
-  const zutaten = await Promise.all(
-    array.map((obj) => getZutat(obj.ingredient))
-  );
+  let zutaten = await Promise.all(array.map((obj) => getZutat(obj.ingredient)));
 
-  return array.map((obj, idx) => {
-    return { ...zutaten[idx], measure: obj["measure"] };
-  });
+  return array
+    .map((obj, idx) => {
+      return { ...zutaten[idx], measure: obj["measure"] };
+    })
+    .filter((zutat) => Boolean(zutat.name));
 }
 
 export function getZutatList() {

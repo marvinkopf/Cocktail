@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CocktailListCards from "../components/CocktailListCards";
 import Searchbar from "../components/Searchbar";
 import { useMixbarTitle } from "../hooks/useMixbarTitle";
-import { getRandomCocktails } from "../models/cocktails";
+import { getRandomRezept } from "../models/rezept";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function Home() {
   useMixbarTitle("Home");
 
   useEffect(() => {
-    getRandomCocktails(3).then((drinks) => setCocktails(drinks));
+    getRandomRezept(3).then((drinks) => setCocktails(drinks));
   }, []);
 
   const handleSearch = (e) => {

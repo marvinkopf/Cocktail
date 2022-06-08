@@ -4,8 +4,8 @@ import Button from "../components/Button";
 import CocktailTable from "../components/CocktailTable";
 import Searchbar from "../components/Searchbar";
 import { useMixbarTitle } from "../hooks/useMixbarTitle";
-import { getCocktailList } from "../models/cocktails";
 import CocktailListCards from "../components/CocktailListCards";
+import { getRezeptList } from "../models/rezept";
 
 export default function SearchResults() {
   const [cocktails, setCocktails] = useState([]);
@@ -17,7 +17,7 @@ export default function SearchResults() {
   useMixbarTitle("Suche");
 
   useEffect(() => {
-    getCocktailList(searchText).then(setCocktails);
+    getRezeptList(searchText).then(setCocktails);
   }, [searchText]);
 
   const handleSearch = (e) => {
