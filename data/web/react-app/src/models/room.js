@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react";
 import { getDjangoUrl, getNpmUrl } from "../urls"
-const api = getDjangoUrl();
+import { getZutatenFromIdArray } from "./zutat" 
+export const api = getDjangoUrl();
 
-export function getRoom(id) {
-    return fetch(api+"/api/raeume/"+id)
+export async function getRoom(id) {
+     const room = await fetch(api+"/api/raeume/"+id)
       .then(res => res.json());
+      
+      //room.recipes = room.recipes.map(async recipe => {return {...recipe,ingredients: await getZutatenFromIdArray(recipe.ingredients)}})
+      for (let i = 0; i < room.recipes.length; i++) {
+        const ingredients = await getZutatenFromIdArray(room.recipes[i].ingredients);
+        room.recipes[i] = {...room.recipes[i], ingredients}
+
+      }
+      return room;
 }
 
 export function createRoom(name) {

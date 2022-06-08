@@ -15,7 +15,7 @@ export default function Party() {
   const [state, setState] = useState('');
   
   useEffect(() => {getRoom(id).then(result => setRoom(result))},[state])
-
+  console.log(room);
   function removeIng(ing) {
     removeIngFromRoom(room.id, ing).then(result => setState(Math.random()));
   }

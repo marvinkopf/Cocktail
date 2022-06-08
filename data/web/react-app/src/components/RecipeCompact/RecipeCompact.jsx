@@ -1,6 +1,8 @@
 import "./RecipeCompact.css";
 import { Link } from "react-router-dom";
 import CocktailRow from "../CocktailTable/CocktailRow";
+import { getZutat, getZutatenFromIdArray  } from "../../models/zutat"
+import { useState } from "react"
 
 function RecipeCompactComponent(props) {
     let recipe = props.recipe;

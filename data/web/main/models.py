@@ -33,6 +33,4 @@ class Raum(models.Model):
     name = models.CharField(max_length=200, unique=True)
     ingredients = models.ManyToManyField(Zutat)
     recipes = models.ManyToManyField(Rezept)
-    recipe = models.ForeignKey(
-        Rezept, on_delete=models.DO_NOTHING, related_name="rezept_to_zutat")
 
