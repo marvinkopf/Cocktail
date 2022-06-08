@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from main.models import Rezept, Zutat, Raum
+from main.models import Rezept, Zutat, Raum, Rezept_Zutat
+
+
+class RezeptZutatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rezept_Zutat
+        fields = ["ingredient", "measure"]
 
 
 
@@ -11,7 +17,9 @@ class ZutatSerializer(serializers.ModelSerializer):
         
 
 class RezeptSerializer(serializers.ModelSerializer):
-    ingredients = ZutatSerializer(read_only=True, many=True)
+    ingredients = RezeptZutatSerializer(source="rezept_to_zutat", read_only=True,
+                                        many=True)
+
     class Meta:
         model = Rezept
         fields = "__all__"
