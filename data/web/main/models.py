@@ -23,6 +23,8 @@ class Rezept(models.Model):
 
 
 class Rezept_Zutat(models.Model):
-    ingredient = models.ForeignKey(Zutat, on_delete=models.DO_NOTHING)
+    ingredient = models.ForeignKey(
+        Zutat, on_delete=models.DO_NOTHING, related_name="zutat_to_rezept")
     measure = models.CharField(max_length=200)
-    recipe = models.ForeignKey(Rezept, on_delete=models.DO_NOTHING)
+    recipe = models.ForeignKey(
+        Rezept, on_delete=models.DO_NOTHING, related_name="rezept_to_zutat")
